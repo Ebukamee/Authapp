@@ -1,0 +1,46 @@
+:root {
+    --logo:rgba(47,136,255,1);
+}
+
+.links {
+    margin-left: 30%;
+    width: 60%;
+}
+.nav{
+    display: flex;
+    margin:15px  auto;
+    width: 80%;
+    flex-direction: row;
+}
+.link {
+    margin: auto 5%;
+    text-decoration: none;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-weight: 500;
+    color: white;
+}
+
+.logo {
+    color: var(--logo);
+    font-family:  'Jokerman', sans-serif; ;
+    font-size: 45px;
+    margin:20px auto;
+    margin-top: 0.5px;
+}
+
+@media(max-width:700px) {
+    .links {
+        margin: 2% auto;
+        width: 100%;
+    }
+    .nav{
+        flex-direction: column;
+    }
+    .link{
+        display: block;
+        text-align: center;
+    }
+    .logo{
+        margin: auto;
+    }
+}

@@ -1,0 +1,6 @@
+:root {
+    --blue:linear-gradient(rgba(24,62,119,0.497),rgba(32,103,209,0.7));
+} 
+body {
+    background: var(--blue);
+}
