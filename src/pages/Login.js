@@ -1,67 +1,70 @@
-import { useContext, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { UserContext } from "../componets/Context";
 import { Helmet } from "react-helmet";
-import { theUsers } from "../componets/Context";
-import Home from "./Home";
+import { Component } from "react";
+import { Link } from "react-router-dom";
+import '../assets/styles/login.css'
+import { connect } from "react-redux";
+import { loginInitiate } from "../actions/authactions";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+
+function Login () {
+ const navigate = useNavigate()
+  const [state, setState ]= useState ({
+    email : '',
+    password : ''
+  })
+  const  {email,password} = state
 
 
+  const dispatch = useDispatch()
+ const   { Cuser }  = useSelector((state) => state.auth)
+ const   { authError }  = useSelector((state) => state.auth)
+ const   { loading }  = useSelector((state) => state.auth)
 
 
-
-
-
-export default function Login() { 
-    const[value,setValue]=useContext(UserContext)
-    const navigate = useNavigate()
-    const [username, setUsername] = useState("")
-    function UsernameChange(event) {
-        setUsername(event.target.value)
+  const Change = (e) => {
+    let {name,value} = e.target
+    //  console.log({name}.value)
+    setState({...state,[name]:value})
+     console.log({...state,[name]:value})
+  }
+  const Submit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      dispatch(loginInitiate(email,password))
+      navigate('/dashboard')
     }
-    const [password, setPassword] = useState("")
-    function PasswordChange(event) {
-        setPassword(event.target.value)
-    }
-    const [errors, setError] = useState("")
-     function onSubmitHandler(event) {
-        event.preventDefault();
-        
-        const getValueElement = theUsers.find((val) => val.username == username && val.password == password)
-        const checkValueExists =  theUsers.some((val) => val.username == username && val.password == password)
-        console.log(username, password)
-        if (checkValueExists) {
-            getValueElement.isAuthenticated = true
-            const setValue = () => {
-              setValue(getValueElement)
-            }
-            navigate('/dashboard');
-        }
-        else {
-            setError("Inavlid User. Use details specified in this page")
-            console.log('username or password doesnt match')
-        }
-    }
-    
-
-  return (
- <>
- <Helmet>
-          <title>Vigro | Login </title>
-           <meta name="description" content="Login" />
+    setState({email : '',password:""})
+    console.log(Cuser)
+    console.log(authError)
+    // navigate('/dashboard')
+  }
+    return (
+      <>
+        <Helmet>
+          <title>Room | Login </title>
+          <meta name="description" content="Login" />
           <link rel="canonical" href="/login" />
-       </Helmet>
-  <form className="login" onSubmit={onSubmitHandler}>
-    <input name="username" placeholder="Username" type='text' onChange={UsernameChange} />
-    <input name="password" placeholder="Password" type='password' onChange={PasswordChange}/>
-    {errors && <h4 style={{ color: 'red' }}>{errors}</h4>}
-    <button className="button">Login</button>
-  </form>
-  <div className="can">
-    <h3>You can log in with</h3>
-    <p><span>Username: </span>Nnamdi <span>Password:</span> Nna_guy</p>
-    <p><span>Username: </span> Onyeisi <span>Password:</span> boss123</p>
-    <p><span>Username: </span> Arinze <span>Password:</span> Aristotle</p>
-    <p><span>Username: </span> Somto <span>Password:</span> Theman</p>
-    <p><span>Username: </span> Ikenna <span>Password:</span> Power</p></div></>
-  )
-}
+        </Helmet>
+        <form onSubmit={Submit}>
+        <h1>Login</h1>
+          <label>Email Address</label>
+          <input type="email" className="input" placeholder="Enter your email address" name='email' onChange={Change}  required />
+          <label>Password</label>
+          <input type="password" className="input" placeholder="Enter password" name='password' onChange={Change} required />
+          <p className="p" id="red">{authError ? authError : ''}</p>
+          <button>{loading ? 'Loading...' : 'Log In'}</button>
+        </form>
+        <p className="p">Don't have an account? <Link className="link" to='/signup'>Sign Up</Link> </p>
+      </>
+    );
+  }
+// const mapDispatchToProps =(dispatch) => {
+//   return {
+//     signIn : (creds) => dispatch(signIn(null, creds))
+//   }
+// }
+
+// export default connect(null, mapDispatchToProps)(Login)
+export default Login;

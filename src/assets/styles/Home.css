@@ -1,4 +1,109 @@
-.contain{
+.hero {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+.words {
+    position: relative;
+    top: 350px;
+}
+.about img {
+    width: 100%;
+}
+.writings, .about-words {
+    margin: 25px;
+}
+.desktop {
+    display: none;
+}
+p {
+    text-align: left;
+    font-weight: 400;
+}
+.link  {
+    color: black;
+    text-decoration: none;
+}
+ .link li {
+    color: white;
+}
+@media (min-width: 750px) {
+    .contain {
+        display: none;
+    }
+    .desktop {
+        display: block;
+    }
+    .desktop-hero {
+        width: 60%;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+    .discover {
+        width: 40%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--Black);
+    } 
+    .discover p, h2,.discover h1 {
+        margin:5% 15%;
+    }
+    .discover h1 {
+        margin-top: 20%;
+    }
+    #shop {
+        
+    }
+    .about-mobile {
+        margin-top: 34.23%;
+        color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        /* grid-template-rows: 20%,60%,20%; */
+        width: 100%;
+        margin-right: 0;
+    }
+    .about-mobile .imge {
+        width: 50%;
+        height: 200px;
+    }
+    .about-mobile  .about-mobil {
+        width: 60%;
+        padding: 30px;
+    }
+    .about-mobile img {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .contain{
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -6,7 +111,7 @@
 }
 .image{
     width: 50%;
-    /* margin: auto 4%; */
+    margin: auto 4%;
     position: relative;
     right: -5%;
 }
@@ -49,5 +154,5 @@ p{
   body {
     background-image: var(--blue);
     background-color:rgba(0,0,0.7);
-    /* margin: 0; */
-  }
+    margin: 0;
+  } */

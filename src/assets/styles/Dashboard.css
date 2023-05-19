@@ -1,0 +1,58 @@
+@import './Layout.css';
+
+.dashboard {
+    height: fit-content;
+}
+#nav img {
+    margin: 15px;
+
+}
+#nav  {
+
+}
+#span {
+    float: right;
+}
+#span button {
+    float: left;
+    margin: 13px;
+    padding: 5px 15px;
+}
+button{
+    background-color: var(--Very-Dark-Gray);
+    color: var(--White);
+    border: 1px solid var(--Very-Dark-Gray);
+}
+.circle {
+    padding: 7px 10px;
+    background-color:rgb(137, 7, 7);
+    color: var(--White);
+    float: left;
+    margin: 13px;
+    border-radius: 100%;
+}
+.product {
+    width: 80%;
+    height: 100px;
+    max-width: 350px;
+    display: inline-block;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px var(--Dark-Gray);
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.product img {
+    width: 90%;
+}
+/* .products {
+    width: 90%;
+    text-align: center;
+} */
+.Dashboard {
+    width: 100%;
+    text-align: center;
+}
+.Dashboard p {
+    text-align: center;
+}

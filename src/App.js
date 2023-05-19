@@ -1,15 +1,19 @@
 import Layout from './componets/Layout';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Home from './pages/Home'
 import { Routes, Route } from 'react-router-dom';
 import Test from './pages/Boundry';
 import Error from './pages/notfound';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import { UserContext } from './componets/Context';
 import Dashboard from './pages/Dashboard';
+import Redirect from './componets/Redirect';
 import { Helmet } from 'react-helmet';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from './componets/fbConfig';
+import { setUser } from './actions/authactions';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -49,6 +53,17 @@ const reload = () => {
    window.location.href='/'
 }
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if(authUser) {
+        dispatch(setUser(authUser))
+      }
+      else {
+        dispatch(setUser(null))
+      }
+    })
+  }, [dispatch])
   return (
     <ErrorBoundary>
     <UserContext.Provider value="null">
@@ -57,7 +72,9 @@ function App() {
       <Route index element={<Home />} />
       <Route path='/testError' element={<Test />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} />
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/redirect' element={<Redirect />} />
     </Route>
     <Route path='*' element={<Error />} />
    </Routes>

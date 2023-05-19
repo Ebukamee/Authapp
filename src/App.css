@@ -1,50 +1,29 @@
-:root {
-  --blue:radial-gradient(rgba(24,62,119,0.497),rgba(32,103,209,0.7));
-} 
-/* body {
-  background-image: var(--blue);
-  background-color: black;
-  /* margin: 0;
-} */
-.err {
-  width: 80%;
-  margin: auto;
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'League Spartan',sans-serif;
+}
+p {
+  color: hsl(0, 0%, 27%);
+  
+}
+
+.redirect {
   text-align: center;
+  animation-name: animate;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
 }
-input {
-  background-color: white;
-  border: 1px solid rgba(24,62,119,0.497);
-  padding: 2px 10px;
-  display: block;
-  margin: 25px auto;
-  outline: none;
-}
-button {
-  background-color: rgba(24,62,119,0.497);
-  border: 1px solid rgba(24,62,119,0.497);
-  padding: 2px 40px;
-  display: block;
-  margin: 25px auto;
-  color: white;
-}
-.login,.can {
-  background-color: rgba(32,103,209,0.7);
-  max-width: 300px;
-  overflow-x: auto;
-  margin: auto;
-  width: 80%;
-}
-h2,h4 {
-  text-align: center;
-}
-.can {
-  margin-top: 20%;
-}
-span{
-  font-weight: 600;
-  color: gray;
-}
-h3,p {
-  color: white;
-  text-align: center;
+
+@keyframes animate {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.5;
+  }
+  100% {
+    scale: 1;
+  }
 }
