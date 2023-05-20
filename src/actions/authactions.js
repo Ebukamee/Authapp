@@ -1,5 +1,5 @@
 import * as types from './typeactions'
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut} from 'firebase/auth'
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut, updateProfile} from 'firebase/auth'
 import { auth } from '../componets/fbConfig'
 import { useNavigate } from 'react-router-dom'
 
@@ -59,8 +59,10 @@ export const registerInitiate = (email,password,displayName,confirm) => {
         dispatch(registerStart());
          createUserWithEmailAndPassword(auth,email,password)
           .then (({user}) => {
-            window.location.href='/login'
              dispatch(registersucces(user))
+             updateProfile(user, {
+                displayName
+            });
           })
           .catch((error) => dispatch(registerfail(error.message)))
     }

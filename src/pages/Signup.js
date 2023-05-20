@@ -33,9 +33,6 @@ export default function Signup() {
     e.preventDefault();
     if (password === confirm) {
       dispatch(registerInitiate(email,password,displayName));
-       updateProfile(Cuser, {
-                displayName
-            });
       console.log(state)
       console.log(authError)
       console.log(Cuser)

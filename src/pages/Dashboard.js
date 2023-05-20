@@ -25,6 +25,7 @@ export default function Dashboard() {
     }
   }
   useEffect(() => {
+    console.log(Cuser)
     if(Cuser === null && !logout) {
       navigate('/redirect')
       setTimeout(() => {

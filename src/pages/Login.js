@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { loginInitiate } from "../actions/authactions";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Login () {
  const navigate = useNavigate()
@@ -33,13 +33,18 @@ function Login () {
     e.preventDefault();
     if (email && password) {
       dispatch(loginInitiate(email,password))
-      navigate('/dashboard')
     }
-    setState({email : '',password:""})
     console.log(Cuser)
     console.log(authError)
     // navigate('/dashboard')
   }
+  useEffect(() => {
+    if(Cuser) {
+      navigate('/dashboard')
+    }
+
+    else return;
+  }, [navigate, Cuser])
     return (
       <>
         <Helmet>
